@@ -17,19 +17,6 @@
 	['c1', 'b2', 'a3']
 ]
 
-# determine who is X or O
-# use .5 because only 2 options [x or o]
-
-@comp = rand() > 0.5 ? 'X' : 'O'
-@player = @comp == 'X' ? 'O' : 'X'
-
-# player names; introduction
-@comp_name = "Computer"
-puts "TIC TAC TOE"
-puts "Player, what is your name?"
-STDOUT.flush
-@player_name = gets.chomp
-
 #draw game method shows slots, empty and full
 def draw_game
   puts "-----------------------------------------------------------------------------"
@@ -210,3 +197,17 @@ else
 	puts "#{@comp_name} has the first turn"
 	comp_turn
 end
+
+
+# determine who is X or O
+# use .5 because only 2 options [x or o]
+
+@comp = rand() > 0.5 ? 'X' : 'O'
+@player = @comp == 'X' ? 'O' : 'X'
+
+# player names; introduction
+@comp_name = "Computer"
+puts "TIC TAC TOE"
+puts "Player, what is your name?"
+STDOUT.flush
+@player_name = gets.chomp
