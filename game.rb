@@ -152,16 +152,16 @@ end
 
 def comp_find_move
 
-#defending against the player first
+#choosing best comp choice 2 in column
 for column in [@winnings] do
-  if times_in_column(column, @player) == 2
+  if times_in_column(column, @comp) == 2
     return empty_in_column column
   end
 end
 
-#choosing best comp choice 2 in column
+#defending against the player first
 for column in [@winnings] do
-  if times_in_column(column, @comp) == 2
+  if times_in_column(column, @player) == 2
     return empty_in_column column
   end
 end
