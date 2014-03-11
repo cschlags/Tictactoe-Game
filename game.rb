@@ -30,6 +30,92 @@ puts "Player, what is your name?"
 STDOUT.flush
 @player_name = gets.chomp
 
+if(@player == 'X')
+  puts ""
+  puts "#{@player_name} has the first turn"
+  player_turn
+else
+  puts ""
+  puts "The Computer has the first turn"
+  comp_turn
+end
+
+def draw_board
+  puts "============================================================================"
+  
+  puts "TIC TAC TOE"
+  puts "#{@comp_name}: #{@comp}"
+  puts "#{@player_name}: #{@player}"
+  puts ""
+  puts "   a   b   c"
+  puts ""
+  puts " 1 #{@slots["a1"]} | #{@slots["b1"]} | #{@slots["c1"]}"
+  puts "   ---------"
+  puts " 2 #{@slots["a2"]} | #{@slots["b2"]} | #{@slots["c2"]}"
+  puts "   ---------"
+  puts " 3 #{@slots["a3"]} | #{@slots["b3"]} | #{@slots["c3"]}"
+end
+
+def comp_turn
+  move = comp_move
+  @slots[move] = @comp
+  puts ""
+  puts "#{@comp_name} marks #{move.upcase}"
+  check_winner(@player)
+end
+
+def comp_move
+	
+def player_on_board arr, item
+  times = 0
+  arr.each do |i|
+    times += 1 if @slots[i] == item
+    unless @slots[i] == item || @slots[i] == " "
+      #oppisite piece is in column so column cannot be used for win.
+      #therefore, the strategic thing to do is choose a dif column so return 0.
+      return 0
+    end
+  end
+  times
+end
+
+def empty_in_column arr
+  arr.each do |i|
+    if @slots[i] == " "
+      return i
+    end
+  end
+end
+
+@winning.each do |column|
+  if player_on_board(column, @comp) == 2
+    return empty_in_column column
+  end
+end
+
+@winning.each do |column|
+  if player_on_board(column, @player) == 2
+    return empty_in_column column
+  end
+end
+
+@winning.each do |column|
+  if player_on_board(column, @comp) == 1
+    return empty_in_column column
+  end
+end
+
+#no strategic spot found so just find a random empty
+k = @slots.keys;
+i = rand(k.length)
+if @slots[k[i]] == " "
+  return k[i]
+else
+  #random selection is taken so just find the first empty slot
+  @slots.each { |k,v| return k if v == " " }
+end
+end
+
 def player_turn
   puts ""
   puts " TIC TAC TOE"
@@ -68,20 +154,18 @@ def player_turn
   end
 end
 
-def draw_board
-  puts "============================================================================"
-  
-  puts "TIC TAC TOE"
-  puts "#{@comp_name}: #{@comp}"
-  puts "#{@player_name}: #{@player}"
+#format error
+def player_error
   puts ""
-  puts "   a   b   c"
+  puts "Please specify a move with the format 'A1' , 'B3' , 'C2' etc."
+  player_turn
+end
+
+#slot error
+def move_error
   puts ""
-  puts " 1 #{@slots["a1"]} | #{@slots["b1"]} | #{@slots["c1"]}"
-  puts "   ---------"
-  puts " 2 #{@slots["a2"]} | #{@slots["b2"]} | #{@slots["c2"]}"
-  puts "   ---------"
-  puts " 3 #{@slots["a3"]} | #{@slots["b3"]} | #{@slots["c3"]}"
+  puts "Please choose an empty space"
+  player_turn
 end
 
 def check_winner(next_turn)
@@ -119,19 +203,6 @@ def check_winner(next_turn)
   end
 end
 
-#format error
-def player_error
-  puts ""
-  puts "Please specify a move with the format 'A1' , 'B3' , 'C2' etc."
-  player_turn
-end
-
-#slot error
-def move_error
-  puts ""
-  puts "Please choose an empty space"
-  player_turn
-end
 
 #the amount of empty spaces left on the board
 def free_moves
@@ -140,74 +211,4 @@ def free_moves
     slots += 1 if g == " "
   end
   slots
-end
-
-def comp_turn
-  move = comp_move
-  @slots[move] = @comp
-  puts ""
-  puts "#{@comp_name} marks #{move.upcase}"
-  check_winner(@player)
-end
-
-def comp_move
-
-@winning.each do |column|
-  if player_on_board(column, @comp) == 2
-    return empty_in_column column
-  end
-end
-
-@winning.each do |column|
-  if player_on_board(column, @player) == 2
-    return empty_in_column column
-  end
-end
-
-@winning.each do |column|
-  if player_on_board(column, @comp) == 1
-    return empty_in_column column
-  end
-end
-
-#no strategic spot found so just find a random empty
-k = @slots.keys;
-i = rand(k.length)
-if @slots[k[i]] == " "
-  return k[i]
-else
-  #random selection is taken so just find the first empty slot
-  @slots.each { |k,v| return k if v == " " }
-end
-end
-
-def player_on_board arr, item
-  times = 0
-  arr.each do |i|
-    times += 1 if @slots[i] == item
-    unless @slots[i] == item || @slots[i] == " "
-      #oppisite piece is in column so column cannot be used for win.
-      #therefore, the strategic thing to do is choose a dif column so return 0.
-      return 0
-    end
-  end
-  times
-end
-
-def empty_in_column arr
-  arr.each do |i|
-    if @slots[i] == " "
-      return i
-    end
-  end
-end
-
-if(@player == 'X')
-  puts ""
-  puts "#{@player_name} has the first turn"
-  player_turn
-else
-  puts ""
-  puts "The Computer has the first turn"
-  comp_turn
 end
