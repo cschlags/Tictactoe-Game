@@ -29,7 +29,7 @@ class Player
     # make that board.number equal to 'O'
     board.slots["#{slot}"] = "O"
     #check if winner?
-    winner = engine.check_winner(board)
+    winner = game.check_winner(board)
 
     #if there is a winner
     if winner != "d"
@@ -44,7 +44,6 @@ class Player
   end
 
   def smart_move(board)
-
     #if computer is able to have a smart move?
     #testing the smartest move using "X"
     if !final_move(board, "X").nil?
@@ -70,9 +69,9 @@ class Player
 
   def final_move(board, symbol)
     # should go through the winning slots from board
-    Board::WINNING.each do |winning_place|
-      # if the computer has any x's or o's in a winning slot they should play that slots array
-    end
+    # Board::WINNING.each do |winning_place|
+    #   # if the computer has any x's or o's in a winning slot they should play that slots array
+    # end
     #return nil to go to rand above
     return nil
   end
