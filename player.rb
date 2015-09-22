@@ -24,10 +24,7 @@ class Player
     board.show
     #check if winner
     winner = game.check_winner(board)
-    #display winner (create that method)
-    if winner != "draw"
-      # display.winner
-    end
+    game.show_winner(winner)
   end
 
 

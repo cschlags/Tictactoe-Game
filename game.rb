@@ -111,13 +111,10 @@ class Game
     return "d"
   end
 
-  #should take in arg showing the check_winner return
-  def show_winner()
-    #if not "d" and not "o"
-    #if player x wins
+  def show_winner(winner)
+    if winner != "d" && winner != "o"
       puts "X"
-    #if not "d" and not "x"
-    #if o wins puts 
+    elsif winner != "d" && winner != "x"
       puts "O"
     else
       puts "Draw"
