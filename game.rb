@@ -81,12 +81,19 @@ class Game
     #to congratulate winner or say draw
     x_count = 0
     o_count = 0
+
     #go through each board winning slot
+    Board::WINNING_SLOTS.each do |winning_slot|
       #go through each index of those winning slots (it's a double array)
+      winning_slot.each do |index|
         #if the board slot has an x
+        if board.slots["#{index}"] == "X"
           x_count = x_count + 1
         #if board slot has an o
+        elsif board.slots["#{index}"] == "O"
           o_count = o_count + 1
+        end
+      end
       # this should be part of that winning slot .each
       if x_count == 3 or o_count == 3
         break
@@ -94,13 +101,14 @@ class Game
         x_count = 0
         o_count = 0
       end
+    end
     #outside of winning slot .each
     if x_count == 3
-      return "X won"
+      return "X_player won"
     elsif o_count == 3
-      return "O won"
+      return "O_player won"
     end
-    return "No One"
+    return "A Draw"
   end
 end
 # #checking winnings or loses or continuings
