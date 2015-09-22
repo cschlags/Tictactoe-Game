@@ -4,6 +4,13 @@ require_relative "./player"
 
 class Game
   #display board created in ./board
+  #create the new game and new player
+  game = Game.new
+
+  x_player = Player.new
+  o_player = Player.new
+  board    = Board.new
+  board.user_display
   #ask player if first, second, or rand
   #players must go one after the other
   #have winning / losing / match method(s)

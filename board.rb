@@ -13,7 +13,7 @@ class Board
   end
 
   #creates the board that the user will see
-  def display_positions
+  def user_display
     puts ""
     puts " 1 | 2 | 3 "
     puts "-----------"
