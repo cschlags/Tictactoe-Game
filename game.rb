@@ -39,10 +39,32 @@ class Game
       @playerA = Player.new
       @playerB = Player.new
     elsif response == "c"
-      @computer = Computer.new
+      random_start
     else
       puts "Invalid input"
       create_players
+    end
+  end
+
+  def random_start
+    puts "Who should go first? < you / computer / random"
+    response = gets.chomp
+    if response == "you"
+      #make someone playerA
+      #and the other playerB
+    if response == "computer"
+      #make someone playerA
+      #and the other playerB
+    if response == "random"
+      #do a random choice
+        #make someone playerA
+        #and the other playerB
+      #else
+        #make someone playerA
+        #and the other playerB
+    else
+      puts "Invalid input"
+      rand_start
     end
   end
 
