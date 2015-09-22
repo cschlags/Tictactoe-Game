@@ -21,7 +21,7 @@ class Player
     #make the board.position = to the self.symbol eg. "x" or "o"
     board.slots[position] = self.symbol
     #display board
-    #need to create board.show method
+    board.show
     #check if winner
     winner = game.check_winner(board)
     #display winner (create that method)

@@ -104,10 +104,24 @@ class Game
     end
     #outside of winning slot .each
     if x_count == 3
-      return "X_player won"
+      return "x"
     elsif o_count == 3
-      return "O_player won"
+      return "o"
     end
-    return "draw"
+    return "d"
+  end
+
+  #should take in arg showing the check_winner return
+  def show_winner()
+    #if not "d" and not "o"
+    #if player x wins
+      puts "X"
+    #if not "d" and not "x"
+    #if o wins puts 
+      puts "O"
+    else
+      puts "Draw"
+    end
+    exit
   end
 end
