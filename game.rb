@@ -14,7 +14,6 @@ class Game
   board.user_display
   #game needs to have a start and stop method for if someone wins
   game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
-  game.stop #should stop the game when the player wins/loses/ties?
   
   def start(x_player, o_player, board)
     #player sees board before this
