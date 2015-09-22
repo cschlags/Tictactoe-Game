@@ -23,14 +23,35 @@ class Player
 
   def computer_move(board, game)
     #tells user the robot goes
+    puts "the computer is playing"
     #checks the smartest move returns number
+    slot = smart_move(board)
     # make that board.number equal to 'O'
+    board.slots["#{slot}"] = "O"
     #check if winner?
+    winner = engine.check_winner(board)
+
     #if there is a winner
+    if winner != "d"
       #return board.show
+      board.show
       #return winner show method with the "O"
-    #else
+      game.show_winner(winner)
+    else
       #display board
-    #end
+      board.show
+    end
+  end
+
+  def smart_move(board)
+    #if computer is able to have a smart move?
+      #true:
+        #test "x" and "o" with final_move
+      #false:
+        #do a random play
+  end
+
+  def final_move()
+    #
   end
 end
