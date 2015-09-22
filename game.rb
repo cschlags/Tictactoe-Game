@@ -50,18 +50,17 @@ class Game
     puts "Who should go first? < you / computer / random"
     response = gets.chomp
     if response == "you"
-      #make someone playerA
-      #and the other playerB
-    if response == "computer"
-      #make someone playerA
-      #and the other playerB
-    if response == "random"
-      #do a random choice
-        #make someone playerA
-        #and the other playerB
-      #else
-        #make someone playerA
-        #and the other playerB
+      @playerA = Player.new(self)
+      @playerB = Computer.new(self)
+    elsif response == "computer"
+      @playerA = Computer.new(self)
+      @playerB = Player.new(self)
+    elsif response == "random"
+      #from past code 
+      #determine who is playerA and who is playerB
+      #.5 because 2 options
+      @playerA = rand() > 0.5 ? Computer.new(self) : Player.new(self)
+      @playerB = @playerA == Computer.new(self) ? Player.new(self) : Computer.new(self)
     else
       puts "Invalid input"
       rand_start
