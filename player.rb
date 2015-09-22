@@ -9,6 +9,17 @@ class Player
   #controls the moves
   #controls computer algorithm
 
+  #take in board and position
+  def move(board, position)
+    #make the board.position = to the self.symbol eg. "x" or "o"
+    #display board
+    #check if winner
+    #display winner (create that method)
+  end
+
+
+  def computer_move(board)
+  end
   ##FROM original game.rb##
   # #actually initiating the methods
 #  if(@player == 'X')
