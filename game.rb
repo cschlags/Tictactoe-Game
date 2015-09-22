@@ -3,6 +3,17 @@ require_relative "./board"
 require_relative "./player"
 
 class Game
+  def initialize
+    #will need to have defining variables for new players, "x" and "o"?
+    x_player = Player.new("X")
+    o_player = Player.new("O")
+    board    = Board.new
+    board.user_display
+    #game needs to have a start and stop method for if someone wins
+    game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
+    game.stop #put back in to have a draw
+  end
+
   def start(x_player, o_player, board)
     #player sees board before this
 
@@ -79,10 +90,10 @@ class Game
   end
 
   def check_winner(board) #after each move check if there is a winner
-    #each player should start off with 0 points, each symbol that is part of the winning
-    #places should gain that player a point.
-    # once a player has 3 points the if should break and moves onto stop method
-    #to congratulate winner or say draw
+    #each player should start off with 0 points, each symbol that is part 
+    #of the winning places should gain that player a point.
+    # once a player has 3 points the if should break and moves onto stop 
+    #method to congratulate winner or say draw
     x_count = 0
     o_count = 0
     #go through each board winning slot
@@ -144,12 +155,3 @@ end
 #display board created in ./board
 #create the new game and new player
 game = Game.new
-
-#will need to have defining variables for new players, "x" and "o"?
-x_player = Player.new("X")
-o_player = Player.new("O")
-board    = Board.new
-board.user_display
-#game needs to have a start and stop method for if someone wins
-game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
-game.stop #put back in to have a draw

@@ -72,13 +72,13 @@ class Player
 
   def final_move(board, symbol)
     # should go through the winning slots from board
-    Board::WINNING.each do |winning_place|
+    Board::WINNING.each do |place|
     #   # if the computer has any x's or o's in a winning slot they should play that slots array
         order = [[0, 1, 2], [0, 2, 1], [1, 2, 0]]
-        order.each do |priority|
-          if (board.slots["#{winning_place[priority[0]]}"] == symbol) and (board.slots["#{winning_place[priority[1]]}"] == symbol)
-            if board.slots["#{winning_place[priority[2]]}"] == " "
-              return winning_place[priority[2]]
+        order.each do |slot|
+          if (board.slots["#{place[slot[0]]}"] == symbol) and (board.slots["#{place[slot[1]]}"] == symbol)
+            if board.slots["#{place[slot[2]]}"] == " "
+              return place[slot[2]]
             end
           end
         end
