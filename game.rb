@@ -137,23 +137,40 @@ class Game
   end
 
   def line(board)
-    (0...@slots).each do |i|
-      (0...(@slots-1)).each do |j|   
+    (0...@side).each do |i|
+      (0...(@side-1)).each do |j|   
         @point += 1 if board[i][j] == board[i][j+1]
       end
-      if points == true
-        true
+      if point == true
+        return true
       end
     end
-    break
+    false
   end
 
   def column
-
+    (0...@side).each do |i|
+      (0...(@side-1)).each do |j|     
+        @point += 1 if board[j][i] == board[j+1][i]
+      end
+      if point == true
+        return true
+      end   
+    end
+    false
   end
 
   def diagonal
-
+    (0...(@side-1)).each do |x|
+      @point += 1 if board[x][x] == board[x+1][x+1]
+    end
+    if point == true
+      return true
+    end
+    (0...(@side-1)).each do |x|
+      @point += 1 if board[@side-(x+1)][x] == board[@side-(x+2)][x+1]
+    end
+    point == true ? true : false
   end
 
   def points
