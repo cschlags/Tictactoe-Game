@@ -127,6 +127,18 @@ class Game
     puts "Player #{(@turn%2)+1} wins!"
     play_again
   end
+
+  def line_win
+
+  end
+
+  def column_win
+
+  end
+
+  def diagonal_win
+
+  end
 end
 #create the new game
 game = Game.new
