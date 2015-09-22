@@ -66,7 +66,7 @@ class Game
     o_count = 0
 
     #go through each board winning slot
-    Board::WINNING_SLOTS.each do |winning_slot|
+    Board::WINNING.each do |winning_slot|
       #go through each index of those winning slots (it's a double array)
       winning_slot.each do |index|
         #if the board slot has an x

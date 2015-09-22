@@ -70,7 +70,10 @@ class Player
 
   def final_move(board, symbol)
     # should go through the winning slots from board
-    # if the computer has any x's or o's in a winning slot they should play that slots array
+    Board::WINNING.each do |winning_place|
+      # if the computer has any x's or o's in a winning slot they should play that slots array
+    end
     #return nil to go to rand above
+    return nil
   end
 end
