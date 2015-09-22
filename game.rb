@@ -1,5 +1,4 @@
 #since this class will be the one being run by human require_relative board and player 
-require_relative "./board"
 require_relative "./player"
 
 class Game
