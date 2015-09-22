@@ -120,6 +120,13 @@ class Game
     #winner_check?
     winner_check
   end
+
+  def winner_check
+    #since there are no hard-coded wins there should be a line column diagonal win
+    #print board
+    #say which player wins
+    #play_again
+  end
 end
 #create the new game
 game = Game.new
