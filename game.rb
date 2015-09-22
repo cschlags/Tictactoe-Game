@@ -36,8 +36,10 @@ class Game
     puts "Would you like your opponent to be a human or computer? < h / c>"
     response = gets.chomp
     if response == "h"
-    
+      @playerA = Player.new
+      @playerB = Player.new
     elsif response == "c"
+      @computer = Computer.new
     else
       puts "Invalid input"
       create_players
