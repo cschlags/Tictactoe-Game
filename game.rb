@@ -70,8 +70,10 @@ class Game
   end
 
   def print_board
+    print @board
     board = @board.in_groups_of(@slots)
     printed_board = "\n"
+    print board
     board.each_with_index do |row, i|
       row.each do |char|
         printed_board += char.to_s.rjust(@slots**2.to_s.length, " ")
@@ -125,11 +127,8 @@ class Game
   def winner_check
     #since there are no hard-coded wins there should be a line column diagonal win
     board = @board.in_groups_of(slots)
-    #checks each winning solution
+    @point = 1
     if line(board) || column(board) || diagonal(board)
-      #if any of these succeeds then the winner becomes true
-      #winner is annouced
-      #play_again happens
       @winner = true
       puts "Player #{(@turn%2)+1} wins!"
       play_again
@@ -137,45 +136,48 @@ class Game
   end
 
   def line(board)
-    (0...@side).each do |i|
-      (0...(@side-1)).each do |j|   
+    (0...@slots).each do |i|
+      (0...(@slots-1)).each do |j|   
         @point += 1 if board[i][j] == board[i][j+1]
       end
-      if point == true
-        return true
+      if points == true
+        true
       end
     end
     false
   end
 
-  def column
-    (0...@side).each do |i|
-      (0...(@side-1)).each do |j|     
-        @point += 1 if board[j][i] == board[j+1][i]
+  def column(board)
+    (0...@slots).each do |i|
+      (0...(@slots-1)).each do |j|   
+        @point += 1 if board[i][j] == board[i][j+1]
       end
-      if point == true
-        return true
-      end   
+      if points == true
+        true
+      end
     end
     false
   end
 
-  def diagonal
-    (0...(@side-1)).each do |x|
-      @point += 1 if board[x][x] == board[x+1][x+1]
+  def diagonal(board)
+    (0...(@slots-1)).each do |i|
+      @point += 1 if board[i][i] == board[i+1][i+1]
     end
-    if point == true
-      return true
+    if points == true
+      true
     end
-    (0...(@side-1)).each do |x|
-      @point += 1 if board[@side-(x+1)][x] == board[@side-(x+2)][x+1]
+    (0...(@slots-1)).each do |i|
+      @point += 1 if board[@slots-(i+1)][i] == board[@slots-(i+2)][i+1]
     end
-    point == true ? true : false
+    points == true ? true : false
   end
 
   def points
-    #checking the points against the amount of slots
-    #checking points to eachother?
+    if @point == @slots 
+      true
+    else 
+      @point = 1
+    end 
   end
 end
 #create the new game
