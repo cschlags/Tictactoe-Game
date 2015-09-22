@@ -68,7 +68,7 @@ class Player
     end
   end
 
-  def final_move()
+  def final_move(board, symbol)
     #
   end
 end
