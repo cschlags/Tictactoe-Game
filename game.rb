@@ -96,9 +96,9 @@ class Game
   end
 
   def show_winner(winner)
-    if winner != "d" && winner != "o"
+    if winner != "d" && winner != "O"
       puts "X"
-    elsif winner != "d" && winner != "x"
+    elsif winner != "d" && winner != "X"
       puts "O"
     else
       puts "Draw"
