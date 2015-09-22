@@ -3,18 +3,19 @@ require_relative "./player"
 
 class Game
   attr_accessor :board, :slots
+
   def initialize
-    play
+    create_game
   end
 
-  def play
+  def create_game
     #will need to have defining variables for new players, "x" and "o"?
     x_player = Player.new("X")
     o_player = Player.new("O")
     board = design_board
     #game needs to have a start and stop method for if someone wins
     print_board
-    start(x_player, o_player, print_board) #should start the game immediately being the main method displaying and user first experience of player choosing
+    start(x_player, o_player) #should start the game immediately being the main method displaying and user first experience of player choosing
     stop #put back in to have a draw
   end
 
@@ -45,7 +46,8 @@ class Game
     end
     puts printed_board
   end
-  def start(x_player, o_player, board)
+
+  def start(x_player, o_player)
     #player sees board before this
 
     #first/second is easier. add rand later
@@ -60,17 +62,17 @@ class Game
       current = o_player
     end
 
-    #access the play method, the first moves. Should happen 9 times because there are nine slots
+    #access the play_move method, the first moves. Should happen 9 times because there are nine slots
     9.times do
       #which player
       if current == x_player
         #player moves
-        play(current, board)
+        play_move(current, board)
         #switches the players
         current = o_player
       else
         #player moves
-        play(current, board)
+        play_move(current, board)
         #switches the players
         current = x_player
       end
@@ -83,36 +85,37 @@ class Game
     play_again
   end
 
-  # def play(current, board) #the move that each player uses during their turn
-  #   #is the player a human? eg. "x_player"?
-  #   if current.symbol == "X"
-  #     correct = true
+  def play_move(current, board) #the move that each player uses during their turn
+    #is the player a human? eg. "x_player"?
+    if current.symbol == "X"
+      correct = true
 
-  #     while correct do
-  #     #if true then ask where they should move using the board numbers
-  #       puts ""
-  #       print "Where do want to move? <1-9>: "
-  #       position = gets.chomp
-  #       #if the position is wrong or occupied then return to that print
-  #       if !position.to_i.between?(1, 9)
-  #         puts "Please use 1..9"
-  #         correct = true
-  #       elsif %w[X O].include?board.slots[position]
-  #         puts "A player chose that spot, please choose an empty space"
-  #         correct = true
-  #       else
-  #         correct = false
-  #       end
-  #     end
+      while correct do
+      #if true then ask where they should move using the board numbers
+        print_board
+        puts ""
+        print "Where do want to move? <1-9>: "
+        position = gets.chomp
+        #if the position is wrong or occupied then return to that print
+        if !position.to_i.between?(1, 9)
+          puts "Please use 1..9"
+          correct = true
+        elsif %w[X O].include?board.slots[position]
+          puts "A player chose that spot, please choose an empty space"
+          correct = true
+        else
+          correct = false
+        end
+      end
 
-  #     #else player is moved using player.move (board, position)?
-  #     current.move(board, position, self)
-  #   #if not a human? eg. "o_player"
-  #   else
-  #     current.computer_move(board, self)
-  #     #then use computer algorithm player.computer_move(board)?
-  #   end
-  # end
+      #else player is moved using player.move (board, position)?
+      current.move(board, position, self)
+    #if not a human? eg. "o_player"
+    else
+      current.computer_move(board, self)
+      #then use computer algorithm player.computer_move(board)?
+    end
+  end
 
   def check_winner(board) #after each move check if there is a winner
     #each player should start off with 0 points, each symbol that is part 
@@ -165,6 +168,5 @@ class Game
   end
 end
 
-#display board created in ./board
-#create the new game and new player
+#create the new game
 game = Game.new
