@@ -1,5 +1,9 @@
 class Player
   #controls the symbol "X" or "O"
+  
+  def initialize(symbol) # defines whether player has an "x" or "o"
+    @symbol = symbol
+  end
   #will have both the human and computer
   #controls the moves
   #controls computer algorithm
