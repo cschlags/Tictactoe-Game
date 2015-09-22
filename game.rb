@@ -19,16 +19,19 @@ class Game
   end
 
   def stop
+    puts "Lose/Win/Match"
+  end
+
+  def play #the move that each player uses during their turn
 
   end
 
+  def check_winner #after each move check if there is a winner
 
+  end
 
   #ask player if first, second, or rand
   #players must go one after the other
-  #have winning / losing / match method(s)
-  #play/move method
-  #check for winner after each move
 
 end
 # #checking winnings or loses or continuings
