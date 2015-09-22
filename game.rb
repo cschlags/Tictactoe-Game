@@ -7,11 +7,23 @@ class Game
   #create the new game and new player
   game = Game.new
 
+  #will need to have defining variables for new players, "x" and "o"?
   x_player = Player.new
   o_player = Player.new
   board    = Board.new
   board.user_display
   #game needs to have a start and stop method for if someone wins
+  game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
+  game.stop #should stop the game when the player wins/loses/ties?
+  def start(x_player, o_player, board)
+  end
+
+  def stop
+
+  end
+
+
+
   #ask player if first, second, or rand
   #players must go one after the other
   #have winning / losing / match method(s)
