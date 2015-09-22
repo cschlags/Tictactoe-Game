@@ -111,37 +111,3 @@ class Game
     return "A Draw"
   end
 end
-# #checking winnings or loses or continuings
-# def check_game(next_turn)
-#   game_over = false
-#   #@winnings.each do |column|
-#   for column in [@winnings] do
-#     #comp has won?
-#     if times_in_column(column, @comp) == 3 #three in a row
-# 	  puts ""
-#       puts "Game Over Dude, the Computer won!!!"
-#       game_over = true
-#     end
-	
-#     #player has won?
-#     if times_in_column(column, @player) == 3 #three in a row
-# 	  puts ""
-#       puts "Game Over YOU win!!!"
-#       game_over = true
-#     end
-#   end
-#   unless game_over
-#     if(moves_left > 0) #no moves left
-#       if(next_turn == @player) #from comp_turn method
-#         player_turn
-#       else
-#         comp_turn #from player_turn method
-#     end
-	
-#     else
-#       puts ""
-#       puts "Game Over -- DRAW!"
-# 	  game_over = true
-#     end
-#   end
-# end
