@@ -13,7 +13,7 @@ Done- The computer does not need to be smart.  Randomly selecting an available s
 Done- When the game is done, it should announce who the winner is and ask if you want to play again.
 Done- The application should be built using object oriented design.
 
-fix the position include 1-9
+fix the position include 1-9. ** using between? then fix occupied
 create computer move
 
 

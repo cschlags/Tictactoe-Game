@@ -43,14 +43,13 @@ class Game
         print "Where do want to move? <1-9>: "
         position = gets.chomp
         #if the position is wrong or occupied then return to that print
-        if position.include?(1..9)
+        if !position.to_i.between?(1, 9)
           puts "\nPlease use 1..9\n"
         elsif #occupied
           puts "\nA player chose that spot, please choose an empty space\n"
-        #else player is moved using player.move (board, position)?
-        else
-          current.move(board, position, self)
         end
+      #else player is moved using player.move (board, position)?
+      current.move(board, position, self)
     #if not a human? eg. "o_player"
     else
       current.computer_move(board, self)
@@ -58,7 +57,7 @@ class Game
     end
   end
 
-  def check_winner #after each move check if there is a winner
+  def check_winner(board) #after each move check if there is a winner
     #each player should start off with 0 points, each symbol that is part of the winning
     #places should gain that player a point.
     # once a player has 3 points the if should break and moves onto stop method

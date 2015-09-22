@@ -12,12 +12,6 @@ class Player
   #take in board and position
   #also take in game.rb data
   def move(board, position, game)
-        board.positions_with_values[position] = self.mark
-    board.display
-    winner = engine.check_winner(board)
-    if winner != "No One"
-      engine.display_winner(self.mark)
-    end
     #make the board.position = to the self.symbol eg. "x" or "o"
     board.slots[position] = self.symbol
     #display board
