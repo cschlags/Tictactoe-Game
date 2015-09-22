@@ -45,10 +45,23 @@ class Player
 
   def smart_move(board)
     #if computer is able to have a smart move?
-      #true:
-        #test "x" and "o" with final_move
-      #false:
-        #do a random play
+    #testing the smartest move using "X"
+    if !final_move(board, "X").nil?
+      return final_move(board, "X")
+    end
+
+    #testing the smartest move using "O"
+    if !final_move(board, "O").nil?
+      return final_move(board, "O")
+    end
+
+    #do a random play
+    rand = 1 + rand(8)
+    if board.slots["#{rand}"] != "X" and board.slots["#{rand}"] != "O"
+      board.slots["#{rand}"] = "O"
+      return rand
+      random_play = false
+    end
   end
 
   def final_move()
