@@ -88,12 +88,24 @@ class Game
 
   def game_play
     #set turns equal to 0
+    turn = 0
     #will need to check for winner in this method to ensure it does not contiue playing
+    winner = false
     #if winner is false and turns are less than slots?
-      #get the player move
-    #else if turns are equal to slots and no winner then draw
-    #else winner equals someone
-    #turns will need to be increased somewhere
+    while winner == false && turn < @slots**2
+      print_board
+      if turn == (@slots**2)-1
+        #else if turns are equal to slots and no winner then draw
+        puts "It's a tie!"
+        play_again
+      else
+        #get the player move
+        get_moves
+      end
+      #turns will need to be increased somewhere
+      turn += 1
+    end
+    #winner equals someone?
   end
 end
 #create the new game
