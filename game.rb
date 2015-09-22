@@ -66,11 +66,11 @@ class Game
           puts "\nA player chose that spot, please choose an empty space\n"
         #else player is moved using player.move (board, position)?
         else
-          current.move(board, position)
+          current.move(board, position, self)
         end
     #if not a human? eg. "o_player"
     else
-      current.computer_move(board)
+      current.computer_move(board, self)
       #then use computer algorithm player.computer_move(board)?
   end
 
@@ -108,6 +108,6 @@ class Game
     elsif o_count == 3
       return "O_player won"
     end
-    return "A Draw"
+    return "draw"
   end
 end
