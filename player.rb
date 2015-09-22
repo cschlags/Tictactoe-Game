@@ -69,6 +69,8 @@ class Player
   end
 
   def final_move(board, symbol)
-    #
+    # should go through the winning slots from board
+    # if the computer has any x's or o's in a winning slot they should play that slots array
+    #return nil to go to rand above
   end
 end
