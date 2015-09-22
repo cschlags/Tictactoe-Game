@@ -54,10 +54,23 @@ class Game
 
   def play(current, board) #the move that each player uses during their turn
     #is the player a human? eg. "x_player"?
+    if current.symbol == "X"
       #if true then ask where they should move using the board numbers
+        puts ""
+        print "Where do want to move? <1-9>: "
+        position = gets.chomp
         #if the position is wrong or occupied then return to that print
+        if position.include?(1..9)
+          puts "\nPlease use 1..9\n"
+        elsif #occupied
+          puts "\nA player chose that spot, please choose an empty space\n"
         #else player is moved using player.move (board, position)?
+        else
+          current.move(board, position)
+        end
     #if not a human? eg. "o_player"
+    else
+      current.computer_move(board)
       #then use computer algorithm player.computer_move(board)?
   end
 
