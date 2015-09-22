@@ -37,6 +37,8 @@ class Game
 
   def stop
     puts "The Match was a draw"
+    puts ""
+    puts "Want to try again?"
   end
 
   def play(current, board) #the move that each player uses during their turn
@@ -107,11 +109,16 @@ class Game
   end
 
   def show_winner(winner)
-    puts "Results________________________"
+    puts "Results"
     if winner == "X"
-      puts "Good"
+      puts "Congratulations! You won!"
+      puts ""
+      puts "Want to try again?"
+
     else
-      puts "Lost"
+      puts "Boo you lost!"
+      puts ""
+      puts "Want to try again?"
     end
     exit
   end
