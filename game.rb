@@ -35,10 +35,6 @@ class Game
     end
   end
 
-  def stop
-    puts "Lose/Win/Match"
-  end
-
   def play(current, board) #the move that each player uses during their turn
     #is the player a human? eg. "x_player"?
     if current.symbol == "X"
@@ -59,6 +55,7 @@ class Game
     else
       current.computer_move(board, self)
       #then use computer algorithm player.computer_move(board)?
+    end
   end
 
   def check_winner #after each move check if there is a winner
@@ -110,15 +107,14 @@ class Game
   end
 end
 
-  #display board created in ./board
-  #create the new game and new player
-  game = Game.new
+#display board created in ./board
+#create the new game and new player
+game = Game.new
 
-  #will need to have defining variables for new players, "x" and "o"?
-  x_player = Player.new("X")
-  o_player = Player.new("O")
-  board    = Board.new
-  board.user_display
-  #game needs to have a start and stop method for if someone wins
-  game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
-  
+#will need to have defining variables for new players, "x" and "o"?
+x_player = Player.new("X")
+o_player = Player.new("O")
+board    = Board.new
+board.user_display
+#game needs to have a start and stop method for if someone wins
+game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing

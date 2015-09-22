@@ -13,7 +13,9 @@ Done- The computer does not need to be smart.  Randomly selecting an available s
 Done- When the game is done, it should announce who the winner is and ask if you want to play again.
 Done- The application should be built using object oriented design.
 
-create display winner method in game.rb
+fix the position include 1-9
+create computer move
+
 
 Suggestions:
 - Make the grid size variable
