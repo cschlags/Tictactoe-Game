@@ -5,16 +5,16 @@ class Player
   end
 
   def play_move(mark)
-
     puts "Where would you like to move?"
     #need to get the board index that includes that number
-    response = gets.chomp
-    slot_play(@game.board)
+    move = slot_play(@game.board)
+    @game.board[move] = mark
     #another method?
   end
 
   def slot_play(board) 
     #needs to get the move into a number
+    move = gets.to_i
     # if number is greater than the amount of slots 
       #return invalid input
     #if number is taken
