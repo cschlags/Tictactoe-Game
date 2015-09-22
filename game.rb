@@ -1,6 +1,7 @@
 #since this class will be the one being run by human require_relative board and player 
+require 'active_support/all'
 require_relative "./player"
-require_relative "./board"
+require_relative "./computer"
 
 class Game
   attr_accessor :board, :slots
@@ -69,7 +70,7 @@ class Game
   end
 
   def print_board
-    board = @board.each_slice(slots) {|a| p a}.to_a
+    board = @board.in_groups_of(@slots)
     printed_board = "\n"
     board.each_with_index do |row, i|
       row.each do |char|
@@ -113,9 +114,9 @@ class Game
     puts "Player #{(@turn%2)+1}"
     #ie. if player1 moves then player2 will move
     if @turn % 2 == 0 
-      @player1.move("X")
+      @player1.play_move("X")
     else
-      @player2.move("O")
+      @player2.play_move("O")
     end
     #winner_check?
     winner_check
@@ -123,21 +124,41 @@ class Game
 
   def winner_check
     #since there are no hard-coded wins there should be a line column diagonal win
-    print_board
-    puts "Player #{(@turn%2)+1} wins!"
-    play_again
+    board = @board.in_groups_of(slots)
+    #checks each winning solution
+    if line(board) || column(board) || diagonal(board)
+      #if any of these succeeds then the winner becomes true
+      #winner is annouced
+      #play_again happens
+      @winner = true
+      puts "Player #{(@turn%2)+1} wins!"
+      play_again
+    end
   end
 
-  def line_win
+  def line(board)
+    (0...@slots).each do |i|
+      (0...(@slots-1)).each do |j|   
+        @point += 1 if board[i][j] == board[i][j+1]
+      end
+      if points == true
+        true
+      end
+    end
+    break
+  end
+
+  def column
 
   end
 
-  def column_win
+  def diagonal
 
   end
 
-  def diagonal_win
-
+  def points
+    #checking the points against the amount of slots
+    #checking points to eachother?
   end
 end
 #create the new game
