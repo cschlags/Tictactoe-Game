@@ -37,8 +37,8 @@ class Game
     puts "Would you like your opponent to be a human or computer? < h / c>"
     response = gets.chomp
     if response == "h"
-      @playerA = Player.new(self)
-      @playerB = Player.new(self)
+      @player1 = Player.new(self)
+      @player2 = Player.new(self)
     elsif response == "c"
       random_start
     else
@@ -51,17 +51,17 @@ class Game
     puts "Who should go first? < you / computer / random"
     response = gets.chomp
     if response == "you"
-      @playerA = Player.new(self)
-      @playerB = Player.new(self)
+      @player1 = Player.new(self)
+      @player2 = Player.new(self)
     elsif response == "computer"
-      @playerA = Computer.new(self)
-      @playerB = Player.new(self)
+      @player1 = Computer.new(self)
+      @player2 = Player.new(self)
     elsif response == "random"
       #from past code 
-      #determine who is playerA and who is playerB
+      #determine who is player1 and who is player2
       #.5 because 2 options
-      @playerA = rand() > 0.5 ? Computer.new(self) : Player.new(self)
-      @playerB = @playerA == Computer.new(self) ? Player.new(self) : Computer.new(self)
+      @player1 = rand() > 0.5 ? Computer.new(self) : Player.new(self)
+      @player2 = @player1 == Computer.new(self) ? Player.new(self) : Computer.new(self)
     else
       puts "Invalid input"
       random_start
@@ -111,11 +111,11 @@ class Game
   def get_player_moves
     #players move after each other
     puts "Player #{(@turn%2)+1}"
-    #ie. if PlayerA moves then playerB will move
+    #ie. if player1 moves then player2 will move
     if @turn % 2 == 0 
-      @playerA.move("X")
+      @player1.move("X")
     else
-      @playerB.move("O")
+      @player2.move("O")
     end
     #winner_check?
     winner_check
@@ -123,9 +123,9 @@ class Game
 
   def winner_check
     #since there are no hard-coded wins there should be a line column diagonal win
-    #print board
-    #say which player wins
-    #play_again
+    print_board
+    puts "Player #{(@turn%2)+1} wins!"
+    play_again
   end
 end
 #create the new game
