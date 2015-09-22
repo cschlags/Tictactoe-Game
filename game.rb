@@ -17,7 +17,15 @@ class Game
   game.stop #should stop the game when the player wins/loses/ties?
   
   def start(x_player, o_player, board)
+    #player sees board before this
 
+    #first/second is easier. add rand later
+    print "Do you want to play first? <y/n>: "
+    ans = gets.chomp
+
+    #if the answer is 'n' then current is 'o_player'
+    #if answer is 'y' then current is 'x_player'
+    
   end
 
   def stop
