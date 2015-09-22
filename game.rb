@@ -81,19 +81,26 @@ class Game
     #to congratulate winner or say draw
     x_count = 0
     o_count = 0
-    if x_count == 3 or o_count == 3
-      break
-    else
-      x_count = 0
-      o_count = 0
-    end
+    #go through each board winning slot
+      #go through each index of those winning slots (it's a double array)
+        #if the board slot has an x
+          x_count = x_count + 1
+        #if board slot has an o
+          o_count = o_count + 1
+      # this should be part of that winning slot .each
+      if x_count == 3 or o_count == 3
+        break
+      else
+        x_count = 0
+        o_count = 0
+      end
+    #outside of winning slot .each
     if x_count == 3
       return "X won"
     elsif o_count == 3
       return "O won"
-    else
-      return "No one"
     end
+    return "No One"
   end
 end
 # #checking winnings or loses or continuings
