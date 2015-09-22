@@ -8,11 +8,13 @@ class Player
 
     puts "Where would you like to move?"
     #need to get the board index that includes that number
+    response = gets.chomp
+    slot_play(response, @game.board)
     #another method?
   end
 
-  def other_method(move_response)
-
+  def slot_play(move_response, board) 
+    
   end
 
   # #controls the symbol "X" or "O"
