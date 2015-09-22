@@ -28,6 +28,15 @@ class Player
   end
 
   def computer_move(board, game)
-
+    #tells user the robot goes
+    #checks the smartest move returns number
+    # make that board.number equal to 'O'
+    #check if winner?
+    #if there is a winner
+      #return board.show
+      #return winner show method with the "O"
+    #else
+      #display board
+    #end
   end
 end
