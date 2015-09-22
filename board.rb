@@ -23,5 +23,8 @@ class Board
     puts ""
   end
 
+  def show
+    #shows the board's self slots?
+  end
 end
 
