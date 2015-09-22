@@ -3,6 +3,18 @@ class Player
     #since I no longer have a board or simple computer player I need to change this
     @game = game
   end
+
+  def play_move(mark)
+
+    puts "Where would you like to move?"
+    #need to get the board index that includes that number
+    #another method?
+  end
+
+  def other_method(move_response)
+
+  end
+
   # #controls the symbol "X" or "O"
   # attr_accessor :symbol
 
