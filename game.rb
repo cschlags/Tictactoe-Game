@@ -34,8 +34,17 @@ class Game
     #access the play method, the first moves. Should happen 9 times because there are nine slots
     9.times do
       #which player
+      if current == x_player
         #player moves
+        play()
         #switches the players
+        current = o_player
+      else
+        #player moves
+        play()
+        #switches the players
+        current = x_player
+      end
     end
   end
 
