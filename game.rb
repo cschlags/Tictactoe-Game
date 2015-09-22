@@ -35,19 +35,32 @@ class Game
     end
   end
 
+  def stop
+    puts "The Match was a draw"
+  end
+
   def play(current, board) #the move that each player uses during their turn
     #is the player a human? eg. "x_player"?
     if current.symbol == "X"
+      correct = true
+
+      while correct do
       #if true then ask where they should move using the board numbers
         puts ""
         print "Where do want to move? <1-9>: "
         position = gets.chomp
         #if the position is wrong or occupied then return to that print
         if !position.to_i.between?(1, 9)
-          puts "\nPlease use 1..9\n"
-        elsif #occupied
-          puts "\nA player chose that spot, please choose an empty space\n"
+          puts "Please use 1..9"
+          correct = true
+        elsif %w[X O].include?board.slots[position]
+          puts "A player chose that spot, please choose an empty space"
+          correct = true
+        else
+          correct = false
         end
+      end
+
       #else player is moved using player.move (board, position)?
       current.move(board, position, self)
     #if not a human? eg. "o_player"
@@ -64,7 +77,6 @@ class Game
     #to congratulate winner or say draw
     x_count = 0
     o_count = 0
-
     #go through each board winning slot
     Board::WINNING.each do |winning_slot|
       #go through each index of those winning slots (it's a double array)
@@ -87,20 +99,19 @@ class Game
     end
     #outside of winning slot .each
     if x_count == 3
-      return "x"
+      return "X"
     elsif o_count == 3
-      return "o"
+      return "O"
     end
-    return "d"
+    return "no"
   end
 
   def show_winner(winner)
-    if winner != "d" && winner != "O"
-      puts "X"
-    elsif winner != "d" && winner != "X"
-      puts "O"
+    puts "Results________________________"
+    if winner == "X"
+      puts "Good"
     else
-      puts "Draw"
+      puts "Lost"
     end
     exit
   end
@@ -117,3 +128,4 @@ board    = Board.new
 board.user_display
 #game needs to have a start and stop method for if someone wins
 game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
+game.stop #put back in to have a draw

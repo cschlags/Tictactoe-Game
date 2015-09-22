@@ -12,13 +12,16 @@ class Player
   #take in board and position
   #also take in game.rb data
   def move(board, position, game)
+
     #make the board.position = to the self.symbol eg. "x" or "o"
     board.slots[position] = self.symbol
     #display board
     board.show
     #check if winner
     winner = game.check_winner(board)
-    game.show_winner(winner)
+    if winner != "no"
+      game.show_winner(winner)
+    end
   end
 
   def computer_move(board, game)
@@ -32,7 +35,7 @@ class Player
     winner = game.check_winner(board)
 
     #if there is a winner
-    if winner != "d"
+    if winner != "no"
       #return board.show
       board.show
       #return winner show method with the "O"
@@ -69,9 +72,17 @@ class Player
 
   def final_move(board, symbol)
     # should go through the winning slots from board
-    # Board::WINNING.each do |winning_place|
+    Board::WINNING.each do |winning_place|
     #   # if the computer has any x's or o's in a winning slot they should play that slots array
-    # end
+        order = [[0, 1, 2], [0, 2, 1], [1, 2, 0]]
+        order.each do |priority|
+          if (board.slots["#{winning_place[priority[0]]}"] == symbol) and (board.slots["#{winning_place[priority[1]]}"] == symbol)
+            if board.slots["#{winning_place[priority[2]]}"] == " "
+              return winning_place[priority[2]]
+            end
+          end
+        end
+    end
     #return nil to go to rand above
     return nil
   end
