@@ -24,7 +24,14 @@ class Board
   end
 
   def show
-    #shows the board's self slots?
+    #shows board's .each slots index will show "x" or "o"
+    puts ""
+    puts " #{self.slots["1"]} | #{self.slots["2"]} | #{self.slots["3"]} "
+    puts "-----------"
+    puts " #{self.slots["4"]} | #{self.slots["5"]} | #{self.slots["6"]} "
+    puts "-----------"
+    puts " #{self.slots["7"]} | #{self.slots["8"]} | #{self.slots["9"]} "
+    puts ""
   end
 end
 
