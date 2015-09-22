@@ -32,6 +32,11 @@ class Game
     end
 
     #access the play method, the first moves. Should happen 9 times because there are nine slots
+    9.times do
+      #which player
+        #player moves
+        #switches the players
+    end
   end
 
   def stop
