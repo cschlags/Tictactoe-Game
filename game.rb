@@ -75,12 +75,11 @@ class Game
   end
 
   def check_winner #after each move check if there is a winner
-
+    #each player should start off with 0 points, each symbol that is part of the winning
+    #places should gain that player a point.
+    # once a player has 3 points the if should break and moves onto stop method
+    #to congratulate winner or say draw
   end
-
-  #ask player if first, second, or rand
-  #players must go one after the other
-
 end
 # #checking winnings or loses or continuings
 # def check_game(next_turn)
