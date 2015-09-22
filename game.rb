@@ -21,11 +21,17 @@ class Game
 
     #first/second is easier. add rand later
     print "Do you want to play first? <y/n>: "
-    ans = gets.chomp
+    response = gets.chomp
 
     #if the answer is 'n' then current is 'o_player'
     #if answer is 'y' then current is 'x_player'
-    
+    if %w[Y y].include?(response)
+      current = x_player
+    else
+      current = o_player
+    end
+
+    #access the play method, the first moves. Should happen 9 times because there are nine slots
   end
 
   def stop
