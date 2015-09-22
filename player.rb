@@ -9,12 +9,17 @@ class Player
     puts "Where would you like to move?"
     #need to get the board index that includes that number
     response = gets.chomp
-    slot_play(response, @game.board)
+    slot_play(@game.board)
     #another method?
   end
 
-  def slot_play(move_response, board) 
-    
+  def slot_play(board) 
+    #needs to get the move into a number
+    # if number is greater than the amount of slots 
+      #return invalid input
+    #if number is taken
+      #return taken
+    #redo
   end
 
   # #controls the symbol "X" or "O"
