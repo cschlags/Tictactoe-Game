@@ -9,20 +9,21 @@ class Game
   end
 
   def create_game
-    #will need to have defining variables for new players, "x" and "o"?
-    x_player = Player.new("X")
-    o_player = Player.new("O")
-    board = design_board
-    #game needs to have a start and stop method for if someone wins
-    print_board
-    start(x_player, o_player) #should start the game immediately being the main method displaying and user first experience of player choosing
-    stop #put back in to have a draw
+    design_board
+    create_players
+    play_move
+    # #will need to have defining variables for new players, "x" and "o"?
+    # x_player = Player.new("X")
+    # o_player = Player.new("O")
+    # board = design_board
+    # #game needs to have a start and stop method for if someone wins
+    # print_board
+    # start(x_player, o_player) #should start the game immediately being the main method displaying and user first experience of player choosing
+    # stop #put back in to have a draw
   end
 
-  def play_again
-    puts "Play again? y/n"
-    again = gets.downcase[0]
-    again == "y" ? Game.new : exit
+  def create_players
+    exit
   end
 
   def design_board
@@ -45,6 +46,12 @@ class Game
       printed_board += "\n\n" 
     end
     puts printed_board
+  end
+
+  def play_again
+    puts "Play again? y/n"
+    again = gets.downcase[0]
+    again == "y" ? Game.new : exit
   end
 
   def start(x_player, o_player)
