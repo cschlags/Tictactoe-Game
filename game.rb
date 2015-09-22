@@ -33,12 +33,13 @@ class Game
   end
 
   def create_players
-    #human or computer opponent?
     puts "Would you like your opponent to be a human or computer? < h / c>"
-    #if h then two human players
-
-    # if c then computer player
-    #else no
+    response = gets.chomp
+    if response == "h"
+    
+    elsif response == "c"
+    else
+      puts "Invalid input"
       create_players
     end
   end
@@ -57,8 +58,8 @@ class Game
 
   def play_again
     puts "Play again? y/n"
-    again = gets.downcase[0]
-    again == "y" ? Game.new : exit
+    response = gets.chomp
+    response == "y" ? Game.new : exit
   end
 
   def start(x_player, o_player)
