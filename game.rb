@@ -53,7 +53,12 @@ class Game
   end
 
   def play(current, board) #the move that each player uses during their turn
-
+    #is the player a human? eg. "x_player"?
+      #if true then ask where they should move using the board numbers
+        #if the position is wrong or occupied then return to that print
+        #else player is moved using player.move (board, position)?
+    #if not a human? eg. "o_player"
+      #then use computer algorithm player.computer_move(board)?
   end
 
   def check_winner #after each move check if there is a winner
