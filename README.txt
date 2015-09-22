@@ -1,4 +1,8 @@
-This is a new tictactoe game I've made after learning Ruby. I'll continue to add bells and whistles to the program.
+Needs to be Object Oriented:
+  player class
+  board class
+  game class
 
-Have fun playing!
-
+play against computer, similar to current tic tac toe
+pick who is playing first or rand
+rspec
