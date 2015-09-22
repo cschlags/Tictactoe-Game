@@ -10,7 +10,8 @@ class Player
   #controls computer algorithm
 
   #take in board and position
-  def move(board, position)
+  #also take in game.rb data
+  def move(board, position, game)
     #make the board.position = to the self.symbol eg. "x" or "o"
     #display board
     #check if winner
@@ -18,7 +19,7 @@ class Player
   end
 
 
-  def computer_move(board)
+  def computer_move(board, game)
   end
   ##FROM original game.rb##
   # #actually initiating the methods
