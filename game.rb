@@ -36,12 +36,12 @@ class Game
       #which player
       if current == x_player
         #player moves
-        play()
+        play(current, board)
         #switches the players
         current = o_player
       else
         #player moves
-        play()
+        play(current, board)
         #switches the players
         current = x_player
       end
@@ -52,7 +52,7 @@ class Game
     puts "Lose/Win/Match"
   end
 
-  def play #the move that each player uses during their turn
+  def play(current, board) #the move that each player uses during their turn
 
   end
 
