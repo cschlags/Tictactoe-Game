@@ -127,6 +127,7 @@ class Game
   def winner_check
     #since there are no hard-coded wins there should be a line column diagonal win
     board = @board.in_groups_of(slots)
+    #need to keep track of the players points
     @point = 1
     if line(board) || column(board) || diagonal(board)
       @winner = true
@@ -136,8 +137,11 @@ class Game
   end
 
   def line(board)
+    #go through each index of the board
     (0...@slots).each do |i|
+      #go through each index of the board
       (0...(@slots-1)).each do |j|   
+        #if the board slot is equal to the next slot a point is awarded
         @point += 1 if board[i][j] == board[i][j+1]
       end
       if points == true
@@ -148,8 +152,11 @@ class Game
   end
 
   def column(board)
+    #go through board slot
     (0...@slots).each do |i|
+      #go through board slot
       (0...(@slots-1)).each do |j|   
+        #if board slot is equal to the next board slot a point is awarded
         @point += 1 if board[i][j] == board[i][j+1]
       end
       if points == true
@@ -160,13 +167,16 @@ class Game
   end
 
   def diagonal(board)
+    #board slots
     (0...(@slots-1)).each do |i|
+      #if board slot is equal to next board slot by 1
       @point += 1 if board[i][i] == board[i+1][i+1]
     end
     if points == true
       true
     end
     (0...(@slots-1)).each do |i|
+      #diagonal board slot is equal to other diagonal board slot by 2
       @point += 1 if board[@slots-(i+1)][i] == board[@slots-(i+2)][i+1]
     end
     points == true ? true : false
