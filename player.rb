@@ -1,6 +1,7 @@
 class Player
   #controls the symbol "X" or "O"
-  
+  attr_accessor :symbol
+
   def initialize(symbol) # defines whether player has an "x" or "o"
     @symbol = symbol
   end
