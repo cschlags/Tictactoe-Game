@@ -2,15 +2,24 @@
 require_relative "./player"
 
 class Game
+
   def initialize
+    play
+  end
+
+  def play
     #will need to have defining variables for new players, "x" and "o"?
     x_player = Player.new("X")
     o_player = Player.new("O")
-    board    = Board.new
-    board.user_display
     #game needs to have a start and stop method for if someone wins
     game.start(x_player, o_player, board) #should start the game immediately being the main method displaying and user first experience of player choosing
     game.stop #put back in to have a draw
+  end
+
+  def play_again
+    puts "Play again? y/n"
+    again = gets.downcase[0]
+    again == "y" ? Game.new : exit
   end
 
   def start(x_player, o_player, board)
@@ -48,13 +57,7 @@ class Game
   def stop
     puts "The Match was a draw"
     puts ""
-    puts "Want to try again?  <y/n>: "
-    response = gets.chomp
-    if %w[Y y].include?(response)
-      puts "yay"
-    else
-      exit
-    end
+    play_again
   end
 
   def play(current, board) #the move that each player uses during their turn
@@ -129,23 +132,11 @@ class Game
     if winner == "X"
       puts "Congratulations! You won!"
       puts ""
-      puts "Want to try again?  <y/n>: "
-      response = gets.chomp
-      if %w[Y y].include?(response)
-        puts "yay"
-      else
-        exit
-      end
+      play_again
     else
       puts "Boo you lost!"
       puts ""
-      puts "Want to try again?  <y/n>: "
-      response = gets.chomp
-      if %w[Y y].include?(response)
-        puts "yay"
-      else
-        exit
-      end
+      play_again
     end
     exit
   end
