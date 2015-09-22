@@ -79,6 +79,21 @@ class Game
     #places should gain that player a point.
     # once a player has 3 points the if should break and moves onto stop method
     #to congratulate winner or say draw
+    x_count = 0
+    o_count = 0
+    if x_count == 3 or o_count == 3
+      break
+    else
+      x_count = 0
+      o_count = 0
+    end
+    if x_count == 3
+      return "X won"
+    elsif o_count == 3
+      return "O won"
+    else
+      return "No one"
+    end
   end
 end
 # #checking winnings or loses or continuings
