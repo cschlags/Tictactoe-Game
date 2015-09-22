@@ -22,10 +22,6 @@ class Game
     # stop #put back in to have a draw
   end
 
-  def create_players
-    exit
-  end
-
   def design_board
     puts "How big would you like the board to be? < 3 / 4 / 5 >"
     @slots = gets.to_i
@@ -34,6 +30,17 @@ class Game
       design_board
     end    
     @board = (1..@slots**2).to_a
+  end
+
+  def create_players
+    #human or computer opponent?
+    puts "Would you like your opponent to be a human or computer? < h / c>"
+    #if h then two human players
+
+    # if c then computer player
+    #else no
+      create_players
+    end
   end
 
   def print_board
