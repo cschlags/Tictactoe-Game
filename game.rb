@@ -38,7 +38,13 @@ class Game
   def stop
     puts "The Match was a draw"
     puts ""
-    puts "Want to try again?"
+    puts "Want to try again?  <y/n>: "
+    response = gets.chomp
+    if %w[Y y].include?(response)
+      puts "yay"
+    else
+      exit
+    end
   end
 
   def play(current, board) #the move that each player uses during their turn
@@ -113,12 +119,23 @@ class Game
     if winner == "X"
       puts "Congratulations! You won!"
       puts ""
-      puts "Want to try again?"
-
+      puts "Want to try again?  <y/n>: "
+      response = gets.chomp
+      if %w[Y y].include?(response)
+        puts "yay"
+      else
+        exit
+      end
     else
       puts "Boo you lost!"
       puts ""
-      puts "Want to try again?"
+      puts "Want to try again?  <y/n>: "
+      response = gets.chomp
+      if %w[Y y].include?(response)
+        puts "yay"
+      else
+        exit
+      end
     end
     exit
   end
