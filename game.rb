@@ -100,12 +100,18 @@ class Game
         play_again
       else
         #get the player move
-        get_moves
+        get_player_moves
       end
       #turns will need to be increased somewhere
       turn += 1
     end
     #winner equals someone?
+  end
+
+  def get_player_moves
+    #players move after each other
+    #ie. if PlayerA moves then playerB will move
+    #winner_check?
   end
 end
 #create the new game
