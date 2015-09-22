@@ -11,6 +11,7 @@ class Game
   o_player = Player.new
   board    = Board.new
   board.user_display
+  #game needs to have a start and stop method for if someone wins
   #ask player if first, second, or rand
   #players must go one after the other
   #have winning / losing / match method(s)
