@@ -110,8 +110,15 @@ class Game
 
   def get_player_moves
     #players move after each other
+    puts "Player #{(turn%2)+1}"
     #ie. if PlayerA moves then playerB will move
+    if turn % 2 == 0 
+      @playerA.move("X")
+    else
+      @playerB.move("O")
+    end
     #winner_check?
+    winner_check
   end
 end
 #create the new game
