@@ -62,7 +62,7 @@ class Game
       #determine who is player1 and who is player2
       #.5 because 2 options
       @player1 = rand() > 0.5 ? Computer.new(self) : Player.new(self)
-      @player2 = @player1 == Computer.new(self) ? Player.new(self) : Computer.new(self)
+      @player2 = "#{@player1.class}" == "Computer" ? Player.new(self) : Computer.new(self)
     else
       puts "Invalid input"
       random_start
@@ -70,10 +70,8 @@ class Game
   end
 
   def print_board
-    print @board
     board = @board.in_groups_of(@slots)
     printed_board = "\n"
-    print board
     board.each_with_index do |row, i|
       row.each do |char|
         printed_board += char.to_s.rjust(@slots**2.to_s.length, " ")
@@ -137,31 +135,29 @@ class Game
   end
 
   def line(board)
-    #go through each index of the board
-    (0...@slots).each do |i|
-      #go through each index of the board
-      (0...(@slots-1)).each do |j|   
-        #if the board slot is equal to the next slot a point is awarded
-        @point += 1 if board[i][j] == board[i][j+1]
+    #going through each slot
+    (0...@slots).each do |x|
+      #going through each slot
+      (0...(@slots-1)).each do |y|     
+        #if one slot is equal to the slot to the right add point
+        @point += 1 if board[y][x] == board[y+1][x]
       end
       if points == true
-        true
-      end
+        return true
+      end   
     end
     false
   end
 
   def column(board)
-    #go through board slot
-    (0...@slots).each do |i|
-      #go through board slot
-      (0...(@slots-1)).each do |j|   
-        #if board slot is equal to the next board slot a point is awarded
-        @point += 1 if board[i][j] == board[i][j+1]
+    (0...@slots).each do |y|
+      (0...(@slots-1)).each do |x|
+        #if one slot is equal to the slot to the down add point
+        @point += 1 if board[y][x] == board[y][x+1]
       end
       if points == true
-        true
-      end
+        return true
+      end   
     end
     false
   end
@@ -169,16 +165,19 @@ class Game
   def diagonal(board)
     #board slots
     (0...(@slots-1)).each do |i|
-      #if board slot is equal to next board slot by 1
+      #if board slot is equal going in downward right fashion
       @point += 1 if board[i][i] == board[i+1][i+1]
     end
+
     if points == true
       true
     end
+
     (0...(@slots-1)).each do |i|
-      #diagonal board slot is equal to other diagonal board slot by 2
+      #diagonal board slot is equal going in downward left fashion
       @point += 1 if board[@slots-(i+1)][i] == board[@slots-(i+2)][i+1]
     end
+
     points == true ? true : false
   end
 
