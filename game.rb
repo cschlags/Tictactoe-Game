@@ -135,12 +135,10 @@ class Game
   end
 
   def line(board)
-    #going through each slot
-    (0...@slots).each do |x|
-      #going through each slot
-      (0...(@slots-1)).each do |y|     
+    (0...@slots).each do |y|
+      (0...(@slots-1)).each do |x|
         #if one slot is equal to the slot to the right add point
-        @point += 1 if board[y][x] == board[y+1][x]
+        @point += 1 if board[y][x] == board[y][x+1]
       end
       if points == true
         return true
@@ -148,12 +146,14 @@ class Game
     end
     false
   end
-
+  
   def column(board)
-    (0...@slots).each do |y|
-      (0...(@slots-1)).each do |x|
+    #going through each slot
+    (0...@slots).each do |x|
+      #going through each slot
+      (0...(@slots-1)).each do |y|     
         #if one slot is equal to the slot below it add point
-        @point += 1 if board[y][x] == board[y][x+1]
+        @point += 1 if board[y][x] == board[y+1][x]
       end
       if points == true
         return true
