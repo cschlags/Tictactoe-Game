@@ -7,34 +7,34 @@ class Game
   attr_accessor :board, :slots
 
   def initialize
+    #runs all the varaibles from previous version
     create_game
   end
 
   def create_game
+    #designs board found in board.rb previously
     design_board
+    #designs players found previously in player.rb
     create_players
+    #once players and board are created start the game
     game_play
-    # #will need to have defining variables for new players, "x" and "o"?
-    # x_player = Player.new("X")
-    # o_player = Player.new("O")
-    # board = design_board
-    # #game needs to have a start and stop method for if someone wins
-    # print_board
-    # start(x_player, o_player) #should start the game immediately being the main method displaying and user first experience of player choosing
-    # stop #put back in to have a draw
   end
 
   def design_board
+    #customizable board size
     puts "How big would you like the board to be? < 3 / 4 / 5 >"
+    #changes slots size to integer
     @slots = gets.to_i
     if @slots <= 0 || @slots > 5
       puts "That is not valid."
       design_board
-    end    
+    end
+    #creates array of slot ^ 2. eg. 5 becomes 1..25
     @board = (1..@slots**2).to_a
   end
 
   def create_players
+    #decides if you will play computer or human
     puts "Would you like your opponent to be a human or computer? < h / c>"
     response = gets.chomp
     if response == "h"
@@ -53,7 +53,7 @@ class Game
     response = gets.chomp
     if response == "you"
       @player1 = Player.new(self)
-      @player2 = Player.new(self)
+      @player2 = Computer.new(self)
     elsif response == "computer"
       @player1 = Computer.new(self)
       @player2 = Player.new(self)
@@ -71,9 +71,10 @@ class Game
 
   def print_board
     board = @board.in_groups_of(@slots)
-    printed_board = "\n"
+    printed_board = "\n\n"
     board.each_with_index do |row, i|
       row.each do |char|
+        #designing the actual board
         printed_board += char.to_s.rjust(@slots**2.to_s.length, " ")
       end
       printed_board += "\n\n" 
@@ -106,7 +107,6 @@ class Game
       #turns will need to be increased somewhere
       @turn += 1
     end
-    #winner equals someone?
   end
 
   def get_player_moves
@@ -118,7 +118,7 @@ class Game
     else
       @player2.play_move("O")
     end
-    #winner_check?
+    #check if someone has won
     winner_check
   end
 
@@ -152,7 +152,7 @@ class Game
   def column(board)
     (0...@slots).each do |y|
       (0...(@slots-1)).each do |x|
-        #if one slot is equal to the slot to the down add point
+        #if one slot is equal to the slot below it add point
         @point += 1 if board[y][x] == board[y][x+1]
       end
       if points == true
@@ -163,7 +163,6 @@ class Game
   end
 
   def diagonal(board)
-    #board slots
     (0...(@slots-1)).each do |i|
       #if board slot is equal going in downward right fashion
       @point += 1 if board[i][i] == board[i+1][i+1]
