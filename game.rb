@@ -5,7 +5,7 @@ require_relative "./computer"
 require 'pry'
 
 class Game
-  attr_accessor :board, :slots
+  attr_accessor :board, :slots, :difficulty
 
   def initialize
     create_game
@@ -45,17 +45,6 @@ class Game
     end
   end
 
-  def choose_difficulty
-    puts "What difficulty would you like to play at? < beginner / hard / extreme >"
-    @difficulty = gets.chomp.downcase
-    # if difficulty is none of the options then recursion
-    if @difficulty != "beginner" && @difficulty != "hard" && @difficulty != "extreme"
-      puts "Invalid input"
-      choose_difficulty
-    end
-    
-  end
-
   def random_start
     # there should only be a difficulty setting when playing against computer
     choose_difficulty
@@ -80,23 +69,15 @@ class Game
     end
   end
 
-  def print_board
-    board = @board.in_groups_of(@slots)
-    printed_board = "\n\n"
-    board.each_with_index do |row, i|
-      row.each do |char|
-        #designing the actual board
-        printed_board += char.to_s.rjust(@slots**2.to_s.length, " ")
-      end
-      printed_board += "\n\n" 
+  def choose_difficulty
+    puts "What difficulty would you like to play at? < beginner / hard / extreme >"
+    @difficulty = gets.chomp.downcase
+    # if difficulty is none of the options then recursion
+    if @difficulty != "beginner" && @difficulty != "hard" && @difficulty != "extreme"
+      puts "Invalid input"
+      choose_difficulty
     end
-    puts printed_board
-  end
-
-  def play_again
-    puts "Play again? y/n"
-    response = gets.chomp
-    response == "y" ? Game.new : exit
+    
   end
 
   def game_play
@@ -118,6 +99,25 @@ class Game
       #turns will need to be increased somewhere
       @turn += 1
     end
+  end
+
+  def print_board
+    board = @board.in_groups_of(@slots)
+    printed_board = "\n\n"
+    board.each_with_index do |row, i|
+      row.each do |char|
+        #designing the actual board
+        printed_board += char.to_s.rjust(@slots**2.to_s.length, " ")
+      end
+      printed_board += "\n\n" 
+    end
+    puts printed_board
+  end
+
+  def play_again
+    puts "Play again? y/n"
+    response = gets.chomp
+    response == "y" ? Game.new : exit
   end
 
   def get_player_moves
