@@ -2,30 +2,27 @@
 require 'active_support/all'
 require_relative "./player"
 require_relative "./computer"
+require 'pry'
 
 class Game
   attr_accessor :board, :slots
 
   def initialize
-    #runs all the varaibles from previous version
     create_game
   end
 
   def create_game
-    #designs board found in board.rb previously
     design_board
-    #designs players found previously in player.rb
     create_players
-    #once players and board are created start the game
     game_play
   end
 
   def design_board
     #customizable board size
-    puts "How big would you like the board to be? < 3 / 4 / 5 >"
+    puts "How big would you like the board to be? < 3 / 4 / 10 >"
     #changes slots size to integer
     @slots = gets.to_i
-    if @slots <= 0 || @slots > 5
+    if @slots <= 0 || @slots > 10
       puts "That is not valid."
       design_board
     end
@@ -48,8 +45,22 @@ class Game
     end
   end
 
+  def choose_difficulty
+    puts "What difficulty would you like to play at? < beginner / hard / extreme >"
+    @difficulty = gets.chomp.downcase
+    # if difficulty is none of the options then recursion
+    if @difficulty != "beginner" && @difficulty != "hard" && @difficulty != "extreme"
+      puts "Invalid input"
+      choose_difficulty
+    end
+    
+  end
+
   def random_start
-    puts "Who should go first? < you / computer / random"
+    # there should only be a difficulty setting when playing against computer
+    choose_difficulty
+
+    puts "Who should go first? < you / computer / random >"
     response = gets.chomp
     if response == "you"
       @player1 = Player.new(self)
