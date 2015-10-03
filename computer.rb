@@ -30,6 +30,9 @@ class Computer
   end 
 
   def hard_move
+    # use original logic, go for center then go for corners, then everything else is random
+    # should incoporate for all board sizes
+    binding.pry
     # if @game.board[4].is_a?(Integer)
     #   4
     # elsif !@game.board[5].is_a?(Integer) && @game.board[8].is_a?(Integer)
@@ -52,5 +55,8 @@ class Computer
   end
 
   def extreme_move
+    # use center, then block user, then corners, then block user, then try to win a line
+    # this should be kind of similar to my original-original code
+    # should incoporate for all board sizes
   end
 end
