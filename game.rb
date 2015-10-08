@@ -5,7 +5,7 @@ require_relative "./computer"
 require 'pry'
 
 class Game
-  attr_accessor :board, :slots, :difficulty
+  attr_accessor :board, :slots, :difficulty, :boards
 
   def initialize
     create_game
@@ -19,7 +19,7 @@ class Game
 
   def design_board
     #customizable board size
-    puts "How big would you like the board to be? < 3 / 4 / 10 >"
+    puts "How big would you like the board to be? < 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 >"
     #changes slots size to integer
     @slots = gets.to_i
     if @slots <= 0 || @slots > 10
@@ -102,9 +102,9 @@ class Game
   end
 
   def print_board
-    board = @board.in_groups_of(@slots)
+    @boards = @board.in_groups_of(@slots)
     printed_board = "\n\n"
-    board.each_with_index do |row, i|
+    @boards.each_with_index do |row, i|
       row.each do |char|
         #designing the actual board
         printed_board += char.to_s.rjust(@slots**2.to_s.length, " ")

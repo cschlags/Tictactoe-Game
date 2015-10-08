@@ -30,9 +30,35 @@ class Computer
   end 
 
   def hard_move
+    # if @slots%2 = 0 then the number is even so there is no center
+    if @game.slots%2 == 0
+          binding.pry
+    else
+    # if @slots%2 != 0 then the number is odd so there is a center
+      # check center
+      if @game.boards[@game.slots/2][@game.slots/2].is_a?(Integer)
+        @game.boards[@game.slots/2][@game.slots/2]
+      # check top left
+      elsif @game.boards.first.first.is_a?(Integer)
+        @game.boards.first.first
+      # check bottom right
+      elsif @game.boards.last.last.is_a?(Integer)
+        @game.boards.last.last
+      # check top right
+      elsif @game.boards.first.last.is_a?(Integer)
+        @game.boards.first.last
+      # check bottom left
+      elsif @game.boards.last.first.is_a?(Integer)
+        @game.boards.last.first
+      else
+        @game.board.select { |i| i.is_a?(Integer) }.sample - 1
+      end
+    end
+
+
+
     # use original logic, go for center then go for corners, then everything else is random
     # should incoporate for all board sizes
-    binding.pry
     # if @game.board[4].is_a?(Integer)
     #   4
     # elsif !@game.board[5].is_a?(Integer) && @game.board[8].is_a?(Integer)
