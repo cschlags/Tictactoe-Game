@@ -32,7 +32,29 @@ class Computer
   def hard_move
     # if @slots%2 = 0 then the number is even so there is no center
     if @game.slots%2 == 0
-          binding.pry
+      # check first center.first
+      if @game.boards[(@game.slots/2)-1][(@game.slots/2)-1].is_a?(Integer)
+      # check second center.second
+      elsif @game.boards[@game.slots/2][@game.slots/2].is_a?(Integer)
+      # check first center.second
+      elsif @game.boards[(@game.slots/2)-1][@game.slots/2].is_a?(Integer)
+      # check second center.first
+      elsif @game.boards[@game.slots/2][(@game.slots/2)-1].is_a?(Integer)
+      # check top left
+      elsif @game.boards.first.first.is_a?(Integer)
+        @game.boards.first.first
+      # check bottom right
+      elsif @game.boards.last.last.is_a?(Integer)
+        @game.boards.last.last
+      # check top right
+      elsif @game.boards.first.last.is_a?(Integer)
+        @game.boards.first.last
+      # check bottom left
+      elsif @game.boards.last.first.is_a?(Integer)
+        @game.boards.last.first
+      else
+        @game.board.select { |i| i.is_a?(Integer) }.sample - 1
+      end
     else
     # if @slots%2 != 0 then the number is odd so there is a center
       # check center
@@ -54,30 +76,6 @@ class Computer
         @game.board.select { |i| i.is_a?(Integer) }.sample - 1
       end
     end
-
-
-
-    # use original logic, go for center then go for corners, then everything else is random
-    # should incoporate for all board sizes
-    # if @game.board[4].is_a?(Integer)
-    #   4
-    # elsif !@game.board[5].is_a?(Integer) && @game.board[8].is_a?(Integer)
-    #   8
-    # elsif @game.board[0].is_a?(Integer)
-    #   0
-    # elsif @game.board[6].is_a?(Integer)
-    #   6
-    # elsif @game.board[1].is_a?(Integer)
-    #   1 
-    # elsif !@game.board[1].is_a?(Integer) && @game.board[2].is_a?(Integer)
-    #   2
-    # elsif @game.board[3].is_a?(Integer)
-    #   3
-    # elsif @game.board[5].is_a?(Integer)
-    #   5
-    # elsif @game.board[7].is_a?(Integer)
-    #   7
-    # end
   end
 
   def extreme_move
