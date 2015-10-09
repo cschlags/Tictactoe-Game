@@ -2,7 +2,6 @@
 require 'active_support/all'
 require_relative "./player"
 require_relative "./computer"
-require 'pry'
 
 class Game
   attr_accessor :board, :slots, :difficulty, :boards
@@ -70,10 +69,10 @@ class Game
   end
 
   def choose_difficulty
-    puts "What difficulty would you like to play at? < beginner / hard / extreme >"
+    puts "What difficulty would you like to play at? < beginner / hard >"
     @difficulty = gets.chomp.downcase
     # if difficulty is none of the options then recursion
-    if @difficulty != "beginner" && @difficulty != "hard" && @difficulty != "extreme"
+    if @difficulty != "beginner" && @difficulty != "hard"
       puts "Invalid input"
       choose_difficulty
     end

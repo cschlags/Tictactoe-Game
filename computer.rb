@@ -1,5 +1,3 @@
-require 'pry'
-
 class Computer
 
   def initialize(game)
@@ -15,10 +13,11 @@ class Computer
 
     if @game.difficulty == "beginner"
       move = beginner_move
-    elsif @game.difficulty == "hard"
-      move = hard_move
     else
-      move = extreme_move
+    # elsif @game.difficulty == "hard"
+      move = hard_move
+    # else
+    #   move = extreme_move
     end
 
     #the index of the game board gets that mark
@@ -78,9 +77,10 @@ class Computer
     end
   end
 
-  def extreme_move
-    # use center, then block user, then corners, then block user, then try to win a line
-    # this should be kind of similar to my original-original code
-    # should incoporate for all board sizes
-  end
+  # def extreme_move
+  #   # use center, then block user, then corners, then block user, then try to win a line
+  #   # this should be kind of similar to my original-original code
+  #   # should incoporate for all board sizes
+    
+  # end
 end
