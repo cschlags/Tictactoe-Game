@@ -1,3 +1,4 @@
+require 'pry'
 class Computer
 
   def initialize(game)
@@ -21,7 +22,7 @@ class Computer
     end
 
     #the index of the game board gets that mark
-    @game.board[move] = mark
+    @game.board[move-1] = mark
   end
 
   def beginner_move
