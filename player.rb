@@ -1,3 +1,5 @@
+require 'pry'
+
 class Player
   def initialize(game)
     #since I no longer have a board or simple computer player I need to change this

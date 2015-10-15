@@ -14,11 +14,13 @@ class Computer
 
     if @game.difficulty == "beginner"
       move = beginner_move
-    else
-    # elsif @game.difficulty == "hard"
-      move = hard_move
     # else
-    #   move = extreme_move
+    elsif @game.difficulty == "medium"
+      move = medium_move
+    elsif @game.difficulty == "hard"
+      move = hard_move
+    else
+      move = extreme_move
     end
 
     #the index of the game board gets that mark
@@ -29,7 +31,7 @@ class Computer
     @game.board.select { |i| i.is_a?(Integer) }.sample - 1
   end 
 
-  def hard_move
+  def medium_move
     # if @slots%2 = 0 then the number is even so there is no center
     if @game.slots%2 == 0
       # check first center.first
@@ -78,10 +80,14 @@ class Computer
     end
   end
 
-  # def extreme_move
-  #   # use center, then block user, then corners, then block user, then try to win a line
-  #   # this should be kind of similar to my original-original code
-  #   # should incoporate for all board sizes
-    
-  # end
+  def hard_move
+    # use center, then block user, then corners, then block user, then try to win a line
+    # this should be kind of similar to my original-original code
+    # should incoporate for all board sizes
+    # if @slots%2 = 0 then the number is even so there is no center
+  end
+
+  def extreme_move
+    # use unbeatable code
+  end
 end
