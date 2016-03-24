@@ -1,4 +1,3 @@
-require 'pry'
 class Computer
 
   def initialize(game)
